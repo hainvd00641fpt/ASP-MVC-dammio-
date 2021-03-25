@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OneCController.cs" />
     <Compile Include="Global.asax.cs">
@@ -310,6 +311,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\OneC\Index.cshtml" />
     <Content Include="Views\OneC\Hello.cshtml" />
+    <Content Include="Views\Link\Create.cshtml" />
+    <Content Include="Views\Link\Delete.cshtml" />
+    <Content Include="Views\Link\Details.cshtml" />
+    <Content Include="Views\Link\Edit.cshtml" />
+    <Content Include="Views\Link\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
