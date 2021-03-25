@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Hello";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello</title>
+</head>
+<body>
+    <div> 
+        <h3>Đây là nội dung của tập tin Hello.cshtml được xử lý từ phương thức Hello ở controller OneC (OneCController).</h3>
+
+    </div>
+
+    <ul>
+        @for (int i = 0; i < ViewBag.NumTimes; i++) {
+            <li>@ViewBag.Message</li>
+        }
+    </ul>
+</body>
+</html>
