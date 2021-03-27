@@ -15,14 +15,41 @@ namespace OneCMVC.Controllers
         private OneCMVCEntities1 db = new OneCMVCEntities1();
 
         //POST: /Link/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int categoryID = 0)
         {
+            //1. Tao danh sách danh muc hiển thị ở giao diện thông qua DropDownList
+            var categories = from c in db.Categories select c;
+            ViewBag.categoryID = new SelectList(categories, "CategooryID", "CategoryName");
+            
+            //2.tao lien ket giua 2 bang category va link bang menh de join
             var links = from l in db.Links
-                        select l;
-
+                        join c in db.Categories on l.CategoryID equals c.CategoryID
+                        select new { l.LinkID, l.LinkName, l.LinkURL, l.LinkDescription, l.CategoryID, l.CategoryName};
+            
+            //3. tim kiem chuoi truy van 
             if (!String.IsNullOrEmpty(searchString))
             {
-                links = links.Where(s => s.LinkName.Contains(searchString));
+                links = links.Where(s => s.LinkName.Contains(searchString));    
+            }
+
+            //4. tim kiem theo categoyID
+            if(categoryID != 0)
+            {
+                links = links.Where(x => x.CategoryID == categoryID);
+            }
+
+            //5. chuyen doi ket qua tu var sang danh sach  List<Link>
+            List<Link> listLinks = new List<Link>();
+            foreach (var item in links)
+            {
+                Link temp = new Link();
+                temp.CategoryID = item.CategoryID;
+                temp.CategoryName = item.CategoryName;
+                temp.LinkDescription = item.LinkDescription;
+                temp.LinkID = item.LinkID;
+                temp.LinkName = item.LinkName;
+                temp.LinkURL = item.LinkURL;
+                listLinks.Add(temp);
             }
             return View(links);
         }

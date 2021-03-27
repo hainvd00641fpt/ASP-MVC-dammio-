@@ -17,11 +17,17 @@ namespace OneCMVC.Models
     public partial class Link
     {
         public int LinkID { get; set; }
+
         [Display(Name = "Tên liên kết")]
         [Required]
         public string LinkName { get; set; }
+
         public string LinkURL { get; set; }
+
         public string LinkDescription { get; set; }
+
         public Nullable<int> CategoryID { get; set; }
+
+        public String CategoryName { get; set; }
     }
 }
